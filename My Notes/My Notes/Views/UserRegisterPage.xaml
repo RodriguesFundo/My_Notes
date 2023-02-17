@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="My_Notes.UserRegisterPage"
+             BackgroundColor="#23222A">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="130"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Label Text="Criar conta" TextDecorations="Underline" FontAttributes="Bold" HorizontalTextAlignment="Center" Grid.Row="0" FontSize="Large" Margin="10" 
+                   TextColor="#D2D0CF"/>
+
+            <Frame Grid.Row="1" IsClippedToBounds="True" CornerRadius="100" BackgroundColor="#23222A" HorizontalOptions="CenterAndExpand">
+                <ImageButton BackgroundColor="Black" Source="imgTeste.jpeg"/>
+            </Frame>
+            <Frame Grid.Row="2" HorizontalOptions="CenterAndExpand" WidthRequest="300" CornerRadius="20" Margin="10" BackgroundColor="#3E3B46" >
+                <Entry  Placeholder="Nome" TextColor="White" PlaceholderColor="#ff9000"/>
+            </Frame>
+            <Frame Grid.Row="3" HorizontalOptions="CenterAndExpand" WidthRequest="300" CornerRadius="20" Margin="10" BackgroundColor="#3E3B46" >
+                <Entry  Placeholder="Email " TextColor="White" PlaceholderColor="#ff9000"/>
+            </Frame>
+            <Frame Grid.Row="4" HorizontalOptions="CenterAndExpand" WidthRequest="300" CornerRadius="20" Margin="10" BackgroundColor="#3E3B46">
+                <Entry  Placeholder="Senha" IsPassword="True" TextColor="White" PlaceholderColor="#ff9000"/>
+            </Frame>
+
+            <Button x:Name="btnCadastrar" Grid.Row="5" BackgroundColor="#ff9000" CornerRadius="15" Margin="10,10" Text="Cadastrar"/>
+
+        </Grid>    
+    </ContentPage.Content>
+</ContentPage>
