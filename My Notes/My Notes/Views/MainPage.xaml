@@ -5,11 +5,22 @@
              BackgroundColor="#23222A">
 
     <ContentPage.Content>
+        <StackLayout BackgroundColor="Yellow">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
 
-        <StackLayout>
-            <Label Text="Ola mundo" TextColor="White"/>
+                </Grid.RowDefinitions>
 
-            <Entry BackgroundColor="FloralWhite" Placeholder="Entry"/>
+                <Label Grid.Row="0" Text="Ola mundo" BackgroundColor="YellowGreen" TextColor="White"/>
+            
+            </Grid>
+            <Label Text="mmmm"/>
+            <Button x:Name="btnCriarNota"  HorizontalOptions="FillAndExpand" VerticalOptions="End" TextColor="White" Clicked="btnCriarNota_Clicked" Text="Adicionar notas" BackgroundColor="#ff9000"/>
+
         </StackLayout>
 
     </ContentPage.Content>

@@ -6,26 +6,44 @@ using System.Text;
 
 namespace My_Notes.Models
 {
-    internal class Nota
-{
-    [PrimaryKey, AutoIncrement]
-    public int Id { get; set; }
-    [NotNull]
-    public string Titulo { get; set; }
-    public string Descricao { get; set; }
+    [Table("Nota")]
+    public class Nota
+    {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        [NotNull]
+        public string Titulo { get; set; }
+        public string Descricao { get; set; }
 
-    public int UserId { get; set; }
-    [ManyToOne]
-    public User User { get; set; }
+        public int UserId { get; set; }
+        [ManyToOne]
+        public User User { get; set; }
 
-    public DateTime DataDeCriacao { get; set; }
-    public DateTime DataDeActualizacao { get; set; }
+        public DateTime DataDeCriacao { get; set; }
+        public DateTime DataDeActualizacao { get; set; }
 
-    [OneToMany(CascadeOperations = CascadeOperation.All)]
-    public List<Tag> Tags { get; set; }
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<Tag> Tags { get; set; }
 
-    [OneToMany(CascadeOperations = CascadeOperation.All)]
-    public List<Link> Links { get; set; }
-}
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<Link> Links { get; set; }
+
+        public Nota(int id, string titulo, string descricao, int userId, User user, DateTime dataDeCriacao, DateTime dataDeActualizacao, List<Tag> tags, List<Link> links)
+        {
+            Id = id;
+            Titulo = titulo;
+            Descricao = descricao;
+            UserId = userId;
+            User = user;
+            DataDeCriacao = dataDeCriacao;
+            DataDeActualizacao = dataDeActualizacao;
+            Tags = tags;
+            Links = links;
+        }
+
+        public Nota()
+        {
+        }
+    }
 
 }

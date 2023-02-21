@@ -14,5 +14,10 @@ namespace My_Notes
         {
             InitializeComponent();
         }
+
+        private void btnCriarNota_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync(state: "//login/mainPage/createNote");
+        }
     }
 }

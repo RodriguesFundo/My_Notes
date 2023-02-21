@@ -16,7 +16,9 @@ namespace My_Notes
         public MainShell()
         {
             InitializeComponent();
-
+            Routing.RegisterRoute(route: "registration", typeof(UserRegisterPage));
+            Routing.RegisterRoute(route: "mainPage", typeof(MainPage));
+            Routing.RegisterRoute(route: "createNote", typeof(CreateNotePage));
         }
     }
 }

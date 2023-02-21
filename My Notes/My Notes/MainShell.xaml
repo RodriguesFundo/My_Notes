@@ -5,15 +5,24 @@
              x:Class="My_Notes.MainShell"
              BackgroundColor="Black"
              Title="MyNotes"
+             FlyoutBehavior="Disabled"
              FlyoutBackgroundColor="#3E3B46">
 
 
-    
-    
+
+
     <Shell.FlyoutHeader >
         <pages:ShellHeaderView/>
     </Shell.FlyoutHeader>
 
+    <!--<ShellItem>
+        <ShellContent>
+            <pages:LogInPage/>
+        </ShellContent>
+    </ShellItem>-->
+    <ShellItem Route="login">
+        <ShellContent ContentTemplate="{DataTemplate pages:LogInPage}"/>
+    </ShellItem>
 
     <FlyoutItem Title="Tag1">
         <ShellContent ContentTemplate="{DataTemplate pages:LogInPage}"/>

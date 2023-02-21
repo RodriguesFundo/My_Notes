@@ -6,7 +6,8 @@ using System.Text;
 
 namespace My_Notes.Models
 {
-    internal class Link
+    [Table("Link")]
+    public class Link
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -15,5 +16,17 @@ namespace My_Notes.Models
         public int NotaId { get; set; }
         [ManyToOne]
         public Nota Nota { get; set; }
+
+        public Link(int id, string uRL, int notaId, Nota nota)
+        {
+            Id = id;
+            URL = uRL;
+            NotaId = notaId;
+            Nota = nota;
+        }
+
+        public Link()
+        {
+        }
     }
 }

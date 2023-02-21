@@ -25,9 +25,15 @@
             <Frame Grid.Row="3" HorizontalOptions="CenterAndExpand" WidthRequest="300" CornerRadius="20" Margin="10" BackgroundColor="#3E3B46">
                 <Entry  Placeholder="Senha" IsPassword="True" TextColor="White" PlaceholderColor="#ff9000"/>
             </Frame>
-            <Button Grid.Row="4" Text="Entrar" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" WidthRequest="330"  Margin="0,20"   HeightRequest="60" CornerRadius="15" BackgroundColor="#ff9000"/>
-            <Label Text="Criar conta"   HorizontalTextAlignment="Center" Grid.Row="5" FontSize="Large" Margin="0, 20" 
-                   TextColor="#ff9000"/>
+            <Button x:Name="btnEntrar" Grid.Row="4" Text="Entrar" Clicked="btnEntrar_Clicked" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" WidthRequest="330"  Margin="0,20"   HeightRequest="60" CornerRadius="15" BackgroundColor="#ff9000"/>
+            <Label x:Name="lblCriarConta" Text="Criar conta"   HorizontalTextAlignment="Center" Grid.Row="5" FontSize="Large" Margin="0, 20" 
+                   TextColor="#ff9000" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnLabelClicked" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Label />
 
 
         </Grid>
