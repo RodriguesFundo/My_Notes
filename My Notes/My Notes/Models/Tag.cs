@@ -10,7 +10,7 @@ namespace My_Notes.Models
     public class Tag
     {
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public int Id { get; }
         [NotNull]
         public string NomeTag { get; set; }
         public int NotaId { get; set; }
@@ -20,9 +20,8 @@ namespace My_Notes.Models
         [ManyToOne]
         public User User { get; set; }
 
-        public Tag(int id, string nomeTag, int notaId, Nota nota, int userId, User user)
+        public Tag( string nomeTag, int notaId, Nota nota, int userId, User user)
         {
-            Id = id;
             NomeTag = nomeTag;
             NotaId = notaId;
             Nota = nota;

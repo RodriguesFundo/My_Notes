@@ -24,17 +24,20 @@ namespace My_Notes
 
         private async void btnEntrar_Clicked(object sender, EventArgs e)
         {
+            try
+            {
+                LoginViewModel loginViewModel = new LoginViewModel();
+                //loginViewModel.ValidarLogin(txtEmail.Text, txtSenhas.Text);
 
-            await Shell.Current.GoToAsync(state: "//login/mainPage");
-            //MainShell mainShell = new MainShell();
+                await Shell.Current.GoToAsync(state: "//login/mainPage");
 
-            //// Cria uma instância de NavigationPage e define a MainPage para a instância de mainShell
-            //NavigationPage navigationPage = new NavigationPage(mainShell);
+            }
+            catch (Exception)
+            {
 
-
-
-            //// Define a NavigationPage como a nova MainPage do seu aplicativo
-            //App.Current.MainPage = navigationPage;
+                throw;
+            }
+           
         }
 
         private async void OnLabelClicked(object sender, EventArgs e)

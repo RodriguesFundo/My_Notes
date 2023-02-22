@@ -10,16 +10,15 @@ namespace My_Notes.Models
     public class Link
     {
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public int Id { get;  }
         public string URL { get; set; }
 
         public int NotaId { get; set; }
         [ManyToOne]
         public Nota Nota { get; set; }
 
-        public Link(int id, string uRL, int notaId, Nota nota)
+        public Link( string uRL, int notaId, Nota nota)
         {
-            Id = id;
             URL = uRL;
             NotaId = notaId;
             Nota = nota;

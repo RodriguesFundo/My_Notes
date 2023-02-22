@@ -31,6 +31,17 @@ namespace My_Notes
                 user.DataDeCriacao = DateTime.Now;
                 user.DataDeActualizacao = DateTime.Now;
 
+                UserRegisterViewModel userRegisterViewModel = new UserRegisterViewModel(App.DBPath);
+                if (!userRegisterViewModel.EmailJaExiste(user.Email))
+                {
+                    userRegisterViewModel.InserirUser(user);
+                    await DisplayAlert(user.Nome, user.Email, "OK");
+                }
+                else {
+                    await DisplayAlert("", "Email ja existe", "OK");
+                }
+
+
             }
             catch (Exception ex)
             {

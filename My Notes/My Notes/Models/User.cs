@@ -11,10 +11,10 @@ namespace My_Notes.Models
     public class User
     {
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public int Id { get; }
         [NotNull]
         public string Nome { get; set; }
-        [NotNull]
+        [NotNull, Unique]
         public string Email { get; set; }
         [NotNull]
         public string Password { get; set; }
@@ -30,9 +30,9 @@ namespace My_Notes.Models
         public List<Tag> Tags { get; set; }
         
 
-        public User(int id, string nome, string email, string password, byte[] image, DateTime dataDeCriacao, DateTime dataDeActualizacao, List<Nota> notas, List<Tag> tags)
+        public User( string nome, string email, string password, byte[] image, DateTime dataDeCriacao, DateTime dataDeActualizacao, List<Nota> notas, List<Tag> tags)
         {
-            Id = id;
+
             Nome = nome;
             Email = email;
             Password = password;

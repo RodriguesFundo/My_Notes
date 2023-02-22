@@ -49,24 +49,32 @@ namespace My_Notes
             }
         }
 
+        public bool EmailJaExiste(string email)
+        {
+            var user = sQLiteConnection.Table<User>().FirstOrDefault(u => u.Email == email); //Retorna a
+            return user != null;
+        } //Retorna true se existir esse email
+
         //Metodo para listar todos os usaurios
-        public List<User> ListarUsers() {
-            List<User> users = new List<User>(); //Lista que recebe todos dados da BD
-
-            try
+        public List<User> ListarUsers()
+        {
+            using (var conn = new SQLiteConnection(App.DBPath))
             {
-                users = sQLiteConnection.Table<User>().ToList();
-                this.StatusBD = "Listagem de dados";
+                try
+                {
+                    var users = conn.Table<User>().ToList();
+                    this.StatusBD = "Listagem de dados";
+                    return users;
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
             }
-            catch (Exception ex)
-            {
-
-                throw new Exception("Excessao: "+ ex.Message);
-            }
-            return users;
         }
-    
-        
+
+
+
 
     }
 }

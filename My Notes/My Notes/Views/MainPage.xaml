@@ -2,12 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="My_Notes.MainPage"
-             BackgroundColor="#23222A">
+             BackgroundColor="#252525">
 
     <ContentPage.Content>
-        <StackLayout BackgroundColor="Yellow">
-            <Grid>
+        <AbsoluteLayout x:Name="absolute">
+            <!--<Grid>
                 <Grid.RowDefinitions>
+
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -15,13 +16,21 @@
 
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" Text="Ola mundo" BackgroundColor="YellowGreen" TextColor="White"/>
-            
-            </Grid>
-            <Label Text="mmmm"/>
-            <Button x:Name="btnCriarNota"  HorizontalOptions="FillAndExpand" VerticalOptions="End" TextColor="White" Clicked="btnCriarNota_Clicked" Text="Adicionar notas" BackgroundColor="#ff9000"/>
+                --><!--<ListView x:Name="listView" Grid.Row="0" />--><!--
+                <Button x:Name="btnCriarNota" Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="End" TextColor="White" Clicked="btnCriarNota_Clicked" 
+                        Text="Adicionar notas" BackgroundColor="#ff9000"/>
 
-        </StackLayout>
+            </Grid>-->
+            <Frame BackgroundColor="#ff9000" CornerRadius="28" HasShadow="True" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,1,-1,-1" Margin="10" >
+                <Label Text="+" TextColor="White" FontAttributes="Bold" FontSize="Title"/>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </AbsoluteLayout>
+        
+
+
 
     </ContentPage.Content>
 

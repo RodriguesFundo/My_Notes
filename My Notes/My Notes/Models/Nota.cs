@@ -28,13 +28,11 @@ namespace My_Notes.Models
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Link> Links { get; set; }
 
-        public Nota(int id, string titulo, string descricao, int userId, User user, DateTime dataDeCriacao, DateTime dataDeActualizacao, List<Tag> tags, List<Link> links)
+        public Nota( string titulo, string descricao, int userId, DateTime dataDeCriacao, DateTime dataDeActualizacao, List<Tag> tags, List<Link> links)
         {
-            Id = id;
             Titulo = titulo;
             Descricao = descricao;
             UserId = userId;
-            User = user;
             DataDeCriacao = dataDeCriacao;
             DataDeActualizacao = dataDeActualizacao;
             Tags = tags;
