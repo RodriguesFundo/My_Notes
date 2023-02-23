@@ -21,12 +21,18 @@
                         Text="Adicionar notas" BackgroundColor="#ff9000"/>
 
             </Grid>-->
-            <Frame BackgroundColor="#ff9000" CornerRadius="28" HasShadow="True" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,1,-1,-1" Margin="10" >
-                <Label Text="+" TextColor="White" FontAttributes="Bold" FontSize="Title"/>
+            <!--<Frame BackgroundColor="#736D6D" CornerRadius="50" HasShadow="True" WidthRequest="30" HeightRequest="30" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,1,-1,-1" Margin="10">
+                <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="+" TextColor="White" FontAttributes="Bold" FontSize="Title" />
+                    
+                </Grid>
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                 </Frame.GestureRecognizers>
-            </Frame>
+            </Frame>-->
+
+
+            <!--<Button x:Name="btnCriarNota" Clicked="btnCriarNota_Clicked" BackgroundColor="#736D6D" Text="+"  WidthRequest="50" HeightRequest="50"  TextColor="White" FontAttributes="Bold" FontSize="Title"  CornerRadius="50" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,1,-1,-1" Margin="155,20"/>-->
         </AbsoluteLayout>
         
 
