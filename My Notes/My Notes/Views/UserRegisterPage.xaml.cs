@@ -32,14 +32,17 @@ namespace My_Notes
                 user.DataDeActualizacao = DateTime.Now;
 
                 UserRegisterViewModel userRegisterViewModel = new UserRegisterViewModel(App.DBPath);
-                if (!userRegisterViewModel.EmailJaExiste(user.Email))
+                if (await userRegisterViewModel.EmailJaExiste(user.Email))
                 {
-                    userRegisterViewModel.InserirUser(user);
-                    await DisplayAlert(user.Nome, user.Email, "OK");
-                }
-                else {
                     await DisplayAlert("", "Email ja existe", "OK");
                 }
+                else
+                {
+                    await userRegisterViewModel.InserirUser(user);
+                    await DisplayAlert(user.Nome, user.Email, "OK");
+                    await Shell.Current.Navigation.PopAsync();
+                }
+
 
 
             }
@@ -50,5 +53,14 @@ namespace My_Notes
             }
         
         }
+
+        //Tocando no frame que contem o entry, ira dar foco no respectivo entry, nao se limitando no clique do proprio entry
+        //--------------{
+        private void frameNome_Tapped(object sender, EventArgs e){ txtNome.Focus(); }
+        private void frameEmail_Tapped(object sender, EventArgs e){ txtEmail.Focus(); }
+
+        private void frameSenha_Tapped(object sender, EventArgs e){ txtSenha.Focus(); }
+        //-------------------}
+       
     }
 }

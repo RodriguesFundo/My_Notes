@@ -16,10 +16,14 @@ namespace My_Notes
         public MainShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute("loginPage", typeof(LogInPage));
             Routing.RegisterRoute(route: "registration", typeof(UserRegisterPage));
             Routing.RegisterRoute(route: "mainPage", typeof(MainPage));
             Routing.RegisterRoute(route: "createNote", typeof(CreateNotePage));
             Routing.RegisterRoute(route: "noteDetailPage", typeof(NoteDetailPage));
+            
+
+
         }
     }
 }

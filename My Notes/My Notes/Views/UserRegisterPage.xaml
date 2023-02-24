@@ -7,7 +7,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="130"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -17,20 +17,30 @@
             <Label Text="Criar conta"  FontAttributes="Bold" HorizontalTextAlignment="Center" Grid.Row="0" FontSize="25" Margin="10,0,10,10" 
                    TextColor="#D2D0CF"/>
 
-            <Frame Grid.Row="1" IsClippedToBounds="True" BackgroundColor="Black" HorizontalOptions="CenterAndExpand">
-                <ImageButton CornerRadius="100" Source="imgTeste.jpeg"/>
+            <Frame Grid.Row="1" IsClippedToBounds="True" BackgroundColor="Black"  HorizontalOptions="CenterAndExpand">
+                <ImageButton x:Name="profilePicture" CornerRadius="100" WidthRequest="75" HeightRequest="75" Source="imgTeste.jpeg"/>
             </Frame>
-            <Frame Grid.Row="2" HorizontalOptions="CenterAndExpand" WidthRequest="300" CornerRadius="20" Margin="10" BackgroundColor="#3E3B46" >
-                <Entry x:Name="txtNome" Placeholder="Nome" TextColor="White" PlaceholderColor="#ff9000"/>
+            <Frame x:Name="frameNome" Grid.Row="2" HorizontalOptions="CenterAndExpand" WidthRequest="300" CornerRadius="20" Margin="10" BackgroundColor="{StaticResource FrameBackground}" >
+                <Entry x:Name="txtNome" Placeholder="Nome" TextColor="White" PlaceholderColor="{StaticResource OrangeColor}"/>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="frameNome_Tapped"/>
+                </Frame.GestureRecognizers>
+            
             </Frame>
-            <Frame Grid.Row="3" HorizontalOptions="CenterAndExpand" WidthRequest="300" CornerRadius="20" Margin="10" BackgroundColor="#3E3B46" >
-                <Entry x:Name="txtEmail" Placeholder="Email " TextColor="White" PlaceholderColor="#ff9000"/>
+            <Frame x:Name="frameEmail" Grid.Row="3" HorizontalOptions="CenterAndExpand" WidthRequest="300" CornerRadius="20" Margin="10" BackgroundColor="{StaticResource FrameBackground}" >
+                <Entry x:Name="txtEmail" Placeholder="Email " TextColor="White" PlaceholderColor="{StaticResource OrangeColor}"/>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="frameEmail_Tapped"/>
+                </Frame.GestureRecognizers>
             </Frame>
-            <Frame Grid.Row="4" HorizontalOptions="CenterAndExpand" WidthRequest="300" CornerRadius="20" Margin="10" BackgroundColor="#3E3B46">
-                <Entry x:Name="txtSenha" Placeholder="Senha" IsPassword="True" TextColor="White" PlaceholderColor="#ff9000"/>
+            <Frame x:Name="frameSenha" Grid.Row="4" HorizontalOptions="CenterAndExpand" WidthRequest="300" CornerRadius="20" Margin="10" BackgroundColor="{StaticResource FrameBackground}">
+                <Entry x:Name="txtSenha" Placeholder="Senha" IsPassword="True" TextColor="White" PlaceholderColor="{StaticResource OrangeColor}"/>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="frameSenha_Tapped"/>
+                </Frame.GestureRecognizers>
             </Frame>
 
-            <Button x:Name="btnCadastrar" Clicked="btnCadastrar_Clicked" Grid.Row="5" BackgroundColor="#ff9000" CornerRadius="15" Margin="10,10" Text="Cadastrar"/>
+            <Button x:Name="btnCadastrar" Clicked="btnCadastrar_Clicked" Grid.Row="5" BackgroundColor="{StaticResource OrangeColor}" CornerRadius="15" Margin="10,10" Text="Cadastrar"/>
 
         </Grid>    
     </ContentPage.Content>

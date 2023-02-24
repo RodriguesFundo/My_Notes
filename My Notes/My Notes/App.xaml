@@ -3,6 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="My_Notes.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Color x:Key="BackgroundColor">#252525</Color>
+            <Color x:Key="OrangeColor">#ff9000</Color>
+            <Color x:Key="FrameBackground">#3E3B46</Color>
+        </ResourceDictionary>
     </Application.Resources>
+
 </Application>

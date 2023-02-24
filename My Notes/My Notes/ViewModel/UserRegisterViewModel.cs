@@ -3,24 +3,26 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace My_Notes
 {
     public class UserRegisterViewModel
     {
-        SQLiteConnection sQLiteConnection;
+        SQLiteAsyncConnection sQLiteConnection;
         public string StatusBD { get; set; }
         public UserRegisterViewModel(string dbPath)
         {
-            if (dbPath=="") dbPath=App.DBPath; //Se nao encontrar o local, atribua o valor da variavel global
-            sQLiteConnection = new SQLiteConnection(dbPath); //Definicao da BD
-            sQLiteConnection.CreateTable<User>();
-
+            if (dbPath == "") dbPath = App.DBPath; //Se nao encontrar o local, atribua o valor da variavel global
+            sQLiteConnection = new SQLiteAsyncConnection(dbPath); //Definicao da BD
+            sQLiteConnection.CreateTableAsync<User>().Wait();
         }
 
         //Insercao
-        public void InserirUser(User user) {
-            try {
+        public async Task InserirUser(User user)
+        {
+            try
+            {
                 if (string.IsNullOrEmpty(user.Nome))
                     throw new Exception("Campo nome vazio");
                 if (string.IsNullOrEmpty(user.Email))
@@ -28,8 +30,8 @@ namespace My_Notes
                 if (string.IsNullOrEmpty(user.Password))
                     throw new Exception("Campo senha vazio");
 
-                var result = sQLiteConnection.Insert(user);
-                if (result != 0) 
+                var result = await sQLiteConnection.InsertAsync(user);
+                if (result != 0)
                 {
                     this.StatusBD = $"Usuario {user.Nome} adicionado";
                 }
@@ -39,40 +41,92 @@ namespace My_Notes
                 }
 
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message.ToString());
             }
-            finally
-            {
-                sQLiteConnection.Close();
-            }
         }
 
-        public bool EmailJaExiste(string email)
+
+        //Verifica se um um determinado email ja existe na tabela
+        public async Task<bool> EmailJaExiste(string email)
         {
-            var user = sQLiteConnection.Table<User>().FirstOrDefault(u => u.Email == email); //Retorna a
+            var user = await sQLiteConnection.Table<User>().FirstOrDefaultAsync(u => u.Email == email); //Retorna a
             return user != null;
         } //Retorna true se existir esse email
 
+
         //Metodo para listar todos os usaurios
-        public List<User> ListarUsers()
+        public async Task<List<User>> ListarUsers()
         {
-            using (var conn = new SQLiteConnection(App.DBPath))
+            try
             {
-                try
+                var users = await sQLiteConnection.Table<User>().ToListAsync();
+                this.StatusBD = "Listagem de dados";
+                return users;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        //Listar user By (Modificacoes possiveis)
+        public async Task<User> GetUserById(int id)
+        {
+            return await sQLiteConnection.Table<User>().FirstOrDefaultAsync(u => u.Id == id);
+        }
+
+
+
+        //Excluir usuario 1 
+        public async Task ExcluirUser(User user)
+        {
+            try
+            {
+                var result = await sQLiteConnection.DeleteAsync(user);
+                if (result != 0)
                 {
-                    var users = conn.Table<User>().ToList();
-                    this.StatusBD = "Listagem de dados";
-                    return users;
+                    this.StatusBD = $"Usuário {user.Nome} excluído";
                 }
-                catch (Exception ex)
+                else
                 {
-                    throw;
+                    this.StatusBD = $"Usuário não excluído";
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message.ToString());
             }
         }
 
+        public async Task ExcluirUser(int id)
+        {
+            try
+            {
+                var user = await sQLiteConnection.Table<User>().Where(u => u.Id == id).FirstOrDefaultAsync();
+                if (user != null)
+                {
+                    var result = await sQLiteConnection.DeleteAsync(user);
+                    if (result != 0)
+                    {
+                        this.StatusBD = $"Usuário {user.Nome} excluído";
+                    }
+                    else
+                    {
+                        this.StatusBD = $"Usuário não excluído";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public async Task<int> AtualizarUser(User user)
+        {
+            return await sQLiteConnection.UpdateAsync(user);
+        }
 
 
 

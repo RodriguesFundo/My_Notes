@@ -14,36 +14,39 @@ namespace My_Notes
 
         SQLiteConnection sQLiteConnection;
 
+        public LoginViewModel()
+        {
+            sQLiteConnection = new SQLiteConnection(App.DBPath);
+        }
+
         public bool EmailJaExiste(string email)
         {
             var user = sQLiteConnection.Table<User>().FirstOrDefault(u => u.Email == email); //Retorna a
             return user != null;
         } //Retorna true se existir esse email
 
-        public void ValidarLogin(string email, string password) {
-            using (var conn = new SQLiteConnection(App.DBPath))
-            {
+        public bool ValidarLogin(string email, string password) {
                 try
                 {
-                    if (EmailJaExiste(email)) { 
-                        var senha = sQLiteConnection.Table<User>().Select(x=>x.Password).Where(x=>x.Equals(email)).ToString();
-                        if (senha.Equals(password))
+                    if (EmailJaExiste(email))// Verifica se o email existe
+                    {
+                        var user = sQLiteConnection.Table<User>().FirstOrDefault(u => u.Email == email);
+                        if (user.Password.Equals(password))
                         {
-                            throw new Exception("Certo");
+                            return true;
                         }
                     }
-                    else
-                    {
-                        throw new Exception("Conta nao existe");
-                    }
-                    
-                }
+                    return false;
+
+            }
                 catch (Exception)
                 {
-
-                    throw ;
+                    throw;
                 }
-            }
+                finally
+                {
+                    sQLiteConnection.Close();
+                }
         }
 
     }

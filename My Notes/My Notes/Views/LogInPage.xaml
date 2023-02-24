@@ -15,20 +15,20 @@
 
                 </Grid.RowDefinitions>
                 <Label Text="MyNotes"  FontAttributes="Bold" HorizontalTextAlignment="Center" Grid.Row="0" FontSize="50" Margin="10" 
-                   TextColor="#ff9000"/>
+                   TextColor="{StaticResource OrangeColor}"/>
 
                 <Label Text="Faca seu login"  FontAttributes="Bold" HorizontalTextAlignment="Center" Grid.Row="1" FontSize="Large" Margin="0, 20" 
                    TextColor="#D2D0CF"/>
 
                 <Frame Grid.Row="2" HorizontalOptions="CenterAndExpand" WidthRequest="300" CornerRadius="20" Margin="10" BackgroundColor="#3E3B46" >
-                    <Entry x:Name="txtEmail" Placeholder="Email " TextColor="White" PlaceholderColor="#ff9000"/>
+                    <Entry x:Name="txtEmail" Placeholder="Email " TextColor="White" PlaceholderColor="{StaticResource OrangeColor}"/>
                 </Frame>
                 <Frame Grid.Row="3" HorizontalOptions="CenterAndExpand" WidthRequest="300" CornerRadius="20" Margin="10" BackgroundColor="#3E3B46">
-                    <Entry x:Name="txtSenhas" Placeholder="Senha" IsPassword="True" TextColor="White" PlaceholderColor="#ff9000"/>
+                    <Entry x:Name="txtSenhas" Placeholder="Senha" IsPassword="True" TextColor="White" PlaceholderColor="{StaticResource OrangeColor}"/>
                 </Frame>
-                <Button x:Name="btnEntrar" Grid.Row="4" Text="Entrar" Clicked="btnEntrar_Clicked" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" WidthRequest="330"  Margin="0,20"   HeightRequest="60" CornerRadius="15" BackgroundColor="#ff9000"/>
+                <Button x:Name="btnEntrar" Grid.Row="4" Text="Entrar" Clicked="btnEntrar_Clicked" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" WidthRequest="330"  Margin="0,20"   HeightRequest="60" CornerRadius="15" BackgroundColor="{StaticResource OrangeColor}"/>
                 <Label x:Name="lblCriarConta" Text="Criar conta"   HorizontalTextAlignment="Center" Grid.Row="5" FontSize="Large" Margin="0, 20" 
-                   TextColor="#ff9000" >
+                   TextColor="{StaticResource OrangeColor}" >
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnLabelClicked" />
                     </Label.GestureRecognizers>

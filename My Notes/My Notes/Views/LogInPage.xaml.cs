@@ -16,29 +16,39 @@ namespace My_Notes
         public LogInPage()
         {
             InitializeComponent();
-        
+            //Limpar todas navegacoes anteriores, tornando assim uma nova pilha de navegacao
+            if (Navigation.NavigationStack.Count > 0)
+            {
+                Navigation.RemovePage(Navigation.NavigationStack[0]);
+            }
+
         }
 
         //Click da label para cadastro
-        
+
 
         private async void btnEntrar_Clicked(object sender, EventArgs e)
         {
             try
             {
                 LoginViewModel loginViewModel = new LoginViewModel();
-                //loginViewModel.ValidarLogin(txtEmail.Text, txtSenhas.Text);
+                bool loginValido = loginViewModel.ValidarLogin(txtEmail.Text, txtSenhas.Text);
 
-                await Shell.Current.GoToAsync(state: "//login/mainPage");
-
+                if (loginValido)
+                {
+                    await Shell.Current.GoToAsync(state: "//login/mainPage");
+                }
+                else
+                {
+                    await DisplayAlert("Erro", "E-mail ou senha inválidos.", "OK");
+                }
             }
             catch (Exception)
             {
-
                 throw;
             }
-           
         }
+
 
         private async void OnLabelClicked(object sender, EventArgs e)
         {

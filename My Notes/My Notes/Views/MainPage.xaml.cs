@@ -87,11 +87,9 @@ namespace My_Notes
             absolute.Children.Add(button);
         }
 
-        private void button_Clicked(object sender, EventArgs e)
-        {
-            DisplayAlert("", "", "Ok");
-            Shell.Current.GoToAsync(state: "//login/mainPage/createNote");
-        }
+        //Clique do botao para abrir pagiba para adicinar notas
+        private void button_Clicked(object sender, EventArgs e) { Shell.Current.GoToAsync(state: "//login/mainPage/createNote"); }
+
 
         //Evento para click dos frames que contem as notas
         private async void OnFrameTapped(object sender, EventArgs e)
@@ -104,16 +102,8 @@ namespace My_Notes
         }
 
             
+        
 
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync(state: "//login/mainPage/createNote");
-        }
 
-        private void btnCriarNota_Clicked(object sender, EventArgs e)
-        {
-            DisplayAlert("", "", "Ok");
-            Shell.Current.GoToAsync(state: "//login/mainPage/createNote");
-        }
     }
 }
